@@ -1,0 +1,72 @@
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2">Minhas Tarefas</h1>
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" (click)="onAddNewTask()">Adicionar Tarefa</button>
+      <button class="btn btn-secondary" (click)="onLogout()">Sair</button>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <label for="status-filter" class="form-label">Filtrar por Status:</label>
+      <select id="status-filter" class="form-select" [(ngModel)]="filterByStatus" (change)="applyFilter()">
+        <option value="">Todos</option>
+        <option value="PENDING">PENDENTE</option>
+        <option value="IN_PROGRESS">EM PROGRESSO</option>
+        <option value="COMPLETED">CONCLUÍDO</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="creation-date-filter" class="form-label">Filtrar por Criação:</label>
+      <input type="date" id="creation-date-filter" class="form-control" [(ngModel)]="filterByCreationDate"
+        (change)="applyFilter()">
+    </div>
+
+    <div class="col-md-4">
+      <label for="due-date-filter" class="form-label">Filtrar por Vencimento:</label>
+      <input type="date" id="due-date-filter" class="form-control" [(ngModel)]="filterByDueDate"
+        (change)="applyFilter()">
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="alert alert-info text-center">
+    Carregando tarefas...
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-sm" *ngIf="!isLoading && filteredTasks.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">Concluída</th>
+          <th scope="col">Título</th>
+          <th scope="col">Data de Vencimento</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let task of filteredTasks">
+          <th scope="row" class="align-middle">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" [checked]="task.status === 'COMPLETED'"
+                (change)="onToggleTaskStatus(task)">
+            </div>
+          </th>
+          <td class="align-middle"><a [routerLink]="['/tasks', task.id]">{{ task.title }}</a></td>
+          <td class="align-middle">{{ task.dueDate }}</td>
+          <td class="align-middle">
+            <span class="status-badge" [ngClass]="task.status | lowercase">{{ task.status }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!isLoading && filteredTasks.length === 0" class="alert alert-secondary text-center">
+    <p class="mb-0">Nenhuma tarefa encontrada. Adicione uma nova!</p>
+  </div>
+</div>

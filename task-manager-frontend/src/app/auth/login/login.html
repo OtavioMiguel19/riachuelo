@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-sm w-100" style="max-width: 400px;">
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()" novalidate>
+      <h2 class="text-center mb-4">Login</h2>
+      <div *ngIf="errorMessage" class="alert alert-danger text-center">
+        {{ errorMessage }}
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="loginData.email" required email #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger mt-1">
+          <div *ngIf="email.errors?.['required']">
+            O email é obrigatório.
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            Por favor, insira um email válido.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="loginData.password" required #password="ngModel">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger mt-1">
+          <div *ngIf="password.errors?.['required']">
+            A senha é obrigatória.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid || isLoading">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span *ngIf="!isLoading">Entrar</span>
+      </button>
+      <a [routerLink]="['/register']" class="d-block text-center mt-3 text-decoration-none">Não tem uma conta? Registre-se</a>
+    </form>
+  </div>
+</div>
