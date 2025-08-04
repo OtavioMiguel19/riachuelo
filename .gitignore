@@ -1,45 +1,60 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ==========================
+# Node / Angular (Frontend)
+# ==========================
+task-manager-frontend/node_modules/
+task-manager-frontend/dist/
+task-manager-frontend/tmp/
+task-manager-frontend/out-tsc/
+task-manager-frontend/bazel-out/
+task-manager-frontend/.angular/
+task-manager-frontend/.sass-cache/
+task-manager-frontend/coverage/
+task-manager-frontend/libpeerconnection.log
+task-manager-frontend/npm-debug.log*
+task-manager-frontend/yarn-error.log*
+task-manager-frontend/testem.log
+task-manager-frontend/typings/
+task-manager-frontend/connect.lock
 
-# Frontend
-/task-manager-frontend/dist
-/task-manager-frontend/tmp
-/task-manager-frontend/out-tsc
-/task-manager-frontend/bazel-out
-/task-manager-frontend/node_modules
-/task-manager-frontend/npm-debug.log
-/task-manager-frontend/yarn-error.log
-/task-manager-frontend/.angular/cache
-/task-manager-frontend/.sass-cache/
-/task-manager-frontend/connect.lock
-/task-manager-frontend/coverage
-/task-manager-frontend/libpeerconnection.log
-/task-manager-frontend/testem.log
-/task-manager-frontend/typings
+# ==========================
+# Java / Spring Boot (Backend)
+# ==========================
+task-manager-backend/target/
+task-manager-backend/.classpath
+task-manager-backend/.project
+task-manager-backend/.settings/
 
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
+# ==========================
+# VS Code
+# ==========================
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
 
-# Miscellaneous
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+# ==========================
+# IDEs / Ferramentas
+# ==========================
+.idea/
+*.iml
+*.launch
+*.sublime-workspace
+*.sublime-project
+*.log
 
-# System files
+# ==========================
+# Arquivos de sistema
+# ==========================
 .DS_Store
 Thumbs.db
+
+# ==========================
+# Outros desnecessários
+# ==========================
+/connect.lock
+/coverage/
+libpeerconnection.log
+testem.log
+typings/
+.history/
