@@ -1,15 +1,20 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Frontend
+/task-manager-frontend/dist
+/task-manager-frontend/tmp
+/task-manager-frontend/out-tsc
+/task-manager-frontend/bazel-out
+/task-manager-frontend/node_modules
+/task-manager-frontend/npm-debug.log
+/task-manager-frontend/yarn-error.log
+/task-manager-frontend/.angular/cache
+/task-manager-frontend/.sass-cache/
+/task-manager-frontend/connect.lock
+/task-manager-frontend/coverage
+/task-manager-frontend/libpeerconnection.log
+/task-manager-frontend/testem.log
+/task-manager-frontend/typings
 
 # IDEs and editors
 .idea/
@@ -29,8 +34,6 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
